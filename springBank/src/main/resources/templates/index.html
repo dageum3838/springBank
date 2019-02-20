@@ -31,6 +31,16 @@
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
       <li class="nav-item dropdown no-arrow">
+      	<a th:href="@{/login}">
+      		<span class="nav-link dropdown-toggle">로그인</span>
+      	</a>
+      </li>
+      <li class="nav-item dropdown no-arrow">
+      	<a th:href="@{/register}">
+      		<span class="nav-link dropdown-toggle">회원가입</span>
+      	</a>
+      </li>
+      <!-- <li class="nav-item dropdown no-arrow">
       	<span class="nav-link dropdown-toggle">로그인하셨습니다.</span>
       </li>
       <li class="nav-item dropdown no-arrow">
@@ -43,7 +53,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
         </div>
-      </li>
+      </li> -->
     </ul>
 
   </nav>
