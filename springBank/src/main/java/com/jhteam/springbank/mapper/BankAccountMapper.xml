@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper	namespace="com.jhteam.springbank.mapper.BankAccountMapper">
-
+	<select id="selectCustomerConfirm" parameterType="com.jhteam.springbank.vo.Customer" resultType="com.jhteam.springbank.vo.Customer">
+		SELECT
+			member_id as memberId, 
+			member_pw as memberPw, 
+			member_name as memberName, 
+			member_address as memberAddress, 
+			member_phone as memberPhone,
+			office_code as officeCode
+  		FROM customer
+  		WHERE member_id = #{memberId} AND member_pw = #{memberPw}
+	</select>
+	<select id="selectOffice" parameterType="String" resultType="com.jhteam.springbank.vo.Management">
+		SELECT
+			office_code as officeCode,
+  			office_name as officeName,
+  			office_manager as officeManager 
+  		FROM management
+  		WHERE office_code = #{officeCode}
+	</select>
+	<insert	id="insertAccount" parameterType="map">
+		INSERT INTO bankaccount(
+			account_no, 
+			member_id, 
+			account_name,
+			account_office,
+			account_manager
+		) values(
+			#{accountNo},
+			#{memberId},
+			#{accountName},
+			#{accountOffice},
+			#{accountManager})
+	</insert>
 </mapper>
