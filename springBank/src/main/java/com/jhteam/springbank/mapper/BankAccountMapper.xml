@@ -34,4 +34,15 @@
 			#{accountOffice},
 			#{accountManager})
 	</insert>
+	<select id="selectCustomerAccount" parameterType="com.jhteam.springbank.vo.BankAccount" resultType="com.jhteam.springbank.vo.BankAccount">
+		SELECT
+			account_no as accountNo,
+  			member_id as memberId,
+  			account_name as accountName,
+  			account_deposit as accountDeposit,
+  			account_office as accountOffice,
+  			account_office as accountManager 
+  		FROM bankaccount 
+  		WHERE member_id = #{memberId}
+	</select>
 </mapper>

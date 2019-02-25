@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Map;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jhteam.springbank.mapper.BankAccountMapper;
+import com.jhteam.springbank.vo.BankAccount;
 import com.jhteam.springbank.vo.Customer;
 import com.jhteam.springbank.vo.Management;
 
@@ -87,5 +89,10 @@ public class BankAccountService {
 	        //계좌신청처리
 	        bankaccountmapper.insertAccount(map);
 		}
+	}
+	//고객별 계좌정보List 가져오기
+	public List<BankAccount> CustomerAccount(Customer customer) {
+		
+		return bankaccountmapper.selectCustomerAccount(customer);
 	}
 }
