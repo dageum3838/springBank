@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.jhteam.springbank.service.BankAccountService;
+import com.jhteam.springbank.vo.BankAccount;
 import com.jhteam.springbank.vo.Customer;
 import com.jhteam.springbank.vo.Management;
 
@@ -51,5 +52,14 @@ public class BankAccountController {
 		System.out.println(customer.toString());
 		bankaccountservice.addAccount(session, customer);
 		return "redirect:/index";
+	}
+	
+	@GetMapping("/accountDeposit")
+	public String accountDeposit(HttpSession session, Model model) {
+		Customer customer = new Customer();
+		customer.setMemberId((String)session.getAttribute("SID"));
+		List<BankAccount> list = bankaccountservice.CustomerAccount(customer);
+		model.addAttribute("list", list);
+		return "accountDeposit";
 	}
 }
