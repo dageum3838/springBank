@@ -1,5 +1,6 @@
 package com.jhteam.springbank.controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -54,6 +56,13 @@ public class BankAccountController {
 		return "redirect:/index";
 	}
 	
+	// 계좌별 예수금입금현황 페이지 요청
+    /* @param  HttpSession session, Model model
+     * @brief  "http://localhost/accountDeposit" 주소분기(get방식)
+     *		      계좌별 예수금입금현황 
+	 * 		   template폴더에 있는 accountDeposit.html forward
+	 * @return String(view이름)
+	 */
 	@GetMapping("/accountDeposit")
 	public String accountDeposit(HttpSession session, Model model) {
 		Customer customer = new Customer();
@@ -61,5 +70,20 @@ public class BankAccountController {
 		List<BankAccount> list = bankaccountservice.CustomerAccount(customer);
 		model.addAttribute("list", list);
 		return "accountDeposit";
+	}
+	
+	// 예수금입금처리 페이지 요청
+    /* @param  HttpSession session, BankAccount bankaccount
+     * @brief  "http://localhost/accountDeposit" 주소분기(post방식)
+     *		      예수금입금처리
+	 * 		   template폴더에 있는 accountDeposit.html redirect
+	 * @return String(view이름)
+	 */
+	@PostMapping("/depositRequest")
+	public String depositRequest(HttpSession session, BankAccount bankaccount) {
+		bankaccount.setMemberId((String)session.getAttribute("SID"));
+		System.out.println(bankaccount.toString());
+		bankaccountservice.customerDepositAdd(bankaccount);
+		return "redirect:/index";
 	}
 }

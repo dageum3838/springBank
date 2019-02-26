@@ -35,19 +35,19 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Account Deposit</div>
       <div class="card-body">
-        <form action="#" method="post">
+        <form action="/depositRequest" method="post">
            <div class="form-label-group">
               <select class="form-control" name="accountNo" id="accountNo">
               	<option selected="selected">계좌 선택</option>
               	<th:block th:each="l:${list}">
-              		<option th:if="${l.accountDeposit >= 1}" th:value="${l.accountNo}" th:text="${l.accountNo}"></option>
+              		<option th:if="${l.accountDeposit >= 1}" th:value="${l.accountNo}">[[${l.accountNo}]] 예수금현황:[[${l.accountDeposit}]]</option>
               	</th:block>
               </select>
-            </div >
+            </div ><br>
             <div class="form-label-group">
            		<div class="form-label-group">
             		<input type="text" id="accountDeposit" name="accountDeposit" class="form-control" required="required" >
-            		<label for="accountDeposit">예수금현황</label>
+            		<label for="accountDeposit">예수금입력</label>
             	</div>
             </div>
             
@@ -63,7 +63,6 @@
 	        </div>
 	      </div><br>
 	      <button class="btn btn-primary btn-block" type="submit">신청</button>
-          <!-- <a class="btn btn-primary btn-block" th:href="@{/#}">신청</a> -->
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" th:href="@{/index}">Index</a>

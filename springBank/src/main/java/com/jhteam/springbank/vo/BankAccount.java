@@ -1,6 +1,6 @@
 package com.jhteam.springbank.vo;
 
-public class BankAccount {
+public class BankAccount extends Customer{
 	private String accountNo;
 	private String memberId;
 	private String accountName;

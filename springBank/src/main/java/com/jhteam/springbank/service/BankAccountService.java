@@ -95,4 +95,9 @@ public class BankAccountService {
 		
 		return bankaccountmapper.selectCustomerAccount(customer);
 	}
+	
+	//계좌별 예수금 입금 처리
+	public int customerDepositAdd(BankAccount bankaccount) {
+		return bankaccountmapper.selectUpdateDeposit(bankaccount);
+	}
 }

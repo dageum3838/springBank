@@ -45,4 +45,15 @@
   		FROM bankaccount 
   		WHERE member_id = #{memberId}
 	</select>
+	<update id="selectUpdateDeposit" parameterType="com.jhteam.springbank.vo.BankAccount">
+        <selectKey keyProperty="memberId" resultType="String" order="BEFORE">
+			SELECT member_id AS memberId 
+			FROM customer 
+			WHERE member_id = #{memberId} AND member_pw = #{memberPw}
+        </selectKey>
+		UPDATE BankAccount
+		SET 
+			account_deposit = account_deposit + #{accountDeposit}
+		WHERE member_id = #{memberId} AND account_no=#{accountNo}
+    </update>
 </mapper>

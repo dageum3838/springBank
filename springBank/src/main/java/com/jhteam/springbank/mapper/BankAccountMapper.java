@@ -6,9 +6,11 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+
 import com.jhteam.springbank.vo.BankAccount;
 import com.jhteam.springbank.vo.Customer;
 import com.jhteam.springbank.vo.Management;
+
 
 @Mapper
 public interface BankAccountMapper {
@@ -20,4 +22,6 @@ public interface BankAccountMapper {
 	int insertAccount(Map<String,Object> map);
 	// 고객별 계좌정보
 	List<BankAccount> selectCustomerAccount(Customer customer);
+	// 예수금입금 처리
+	int selectUpdateDeposit(BankAccount bankaccount);
 }
