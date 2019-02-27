@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper	namespace="com.jhteam.springbank.mapper.OrdersMapper">
-
+	<select id="ordersCountAll" resultType="int">
+		SELECT count(*)
+		FROM orders
+	</select>
+	<update id="updateCustomerDeposit" parameterType="com.jhteam.springbank.vo.Orders">
+		<selectKey keyProperty="accountDeposit" resultType="int" order="BEFORE">
+			SELECT account_deposit AS accountDeposit
+			FROM bankaccount 
+			WHERE account_no = #{accountNo}
+        </selectKey>
+        UPDATE BankAccount
+		SET 
+			account_deposit = #{accountDeposit} - #{orderPrice}
+		WHERE member_id = #{memberId} AND account_no=#{accountNo}
+	</update>
+	<insert id="insertOrdersCustomer" parameterType="com.jhteam.springbank.vo.Orders">
+		INSERT INTO orders(
+			order_date, 
+			order_no, 
+			account_no, 
+			member_id, 
+			item_code,
+			order_volume,
+			order_price
+		) values(
+			curdate(),
+			#{orderNo},
+			#{accountNo},
+			#{memberId},
+			#{itemCode},
+			#{orderVolume},
+			#{orderPrice})
+	</insert>
 </mapper>

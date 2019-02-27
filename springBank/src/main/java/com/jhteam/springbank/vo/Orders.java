@@ -5,7 +5,7 @@ public class Orders extends BankAccount{
 	private String orderNo;
 	private String accountNo;
 	private String memberId;
-	private String orderCode;
+	private String itemCode;
 	private String orderVolume;
 	private String orderPrice;
 	public String getOrderDate() {
@@ -32,11 +32,11 @@ public class Orders extends BankAccount{
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
-	public String getOrderCode() {
-		return orderCode;
+	public String getItemCode() {
+		return itemCode;
 	}
-	public void setOrderCode(String orderCode) {
-		this.orderCode = orderCode;
+	public void setItemCode(String itemCode) {
+		this.itemCode = itemCode;
 	}
 	public String getOrderVolume() {
 		return orderVolume;
@@ -53,10 +53,8 @@ public class Orders extends BankAccount{
 	@Override
 	public String toString() {
 		return "Orders [orderDate=" + orderDate + ", orderNo=" + orderNo + ", accountNo=" + accountNo + ", memberId="
-				+ memberId + ", orderCode=" + orderCode + ", orderVolume=" + orderVolume + ", orderPrice=" + orderPrice
+				+ memberId + ", itemCode=" + itemCode + ", orderVolume=" + orderVolume + ", orderPrice=" + orderPrice
 				+ "]";
 	}
-	
-	
 	
 }

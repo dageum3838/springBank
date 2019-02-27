@@ -240,8 +240,10 @@
   
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="index.html">JH 투자증권</a>
-
+    <a class="navbar-brand mr-1" href="/index">
+    	<i class="fas fa-jands-helping"></i>
+    	<span>JH 투자증권</span>
+    </a>
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
       
@@ -272,7 +274,7 @@
 	          </th:block>
 	          <!-- <a class="dropdown-item" href="#">계좌별 예치금 </a> -->
 	          <div class="dropdown-divider"></div>
-	          <a class="dropdown-item" href="/logout" >Logout</a>
+	          <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal" >Logout</a>
 	        </div>
 	      </li>
       </th:block>
@@ -324,6 +326,12 @@
 			    <form action="/goodsOrder" method="post">
 			        <div class="modal-body">준비중입니다. 더 좋은 상품으로 보답하겠습니다.</div>
 		     	</form>
+		     	<div class="form-group">
+		     		<div class="text-center">
+          				<a class="d-block small mt-3" th:href="@{/index}">Index</a>
+          <!-- <a class="d-block small" href="forgot-password.html">Forgot Password?</a> -->
+        			</div>
+        		</div>
 		      </div>
 		    </div>    	
 		 </div>
@@ -352,9 +360,14 @@
 			        <div class="modal-body">ARS 1588-6000</div> 
 			        <div class="modal-body">서울특별시 영등포구 여의나루로50(여의도동) KB증권</div> 
 		     	</form>
-		      </div>
-		    </div>    
-		  </div>
+		      	<div class="form-group">
+		     		<div class="text-center">
+          				<a class="d-block small mt-3" th:href="@{/index}">Index</a>
+					</div>
+        		</div>
+			</div>
+		   </div>    
+		 </div>
       </li>
 <!--===============================================Login==========================================================-->      
 <!--       <li class="nav-item dropdown">
@@ -428,7 +441,9 @@
 		            	<span aria-hidden="true">×</span>
 						</button>
 		        	</div>
-					<form action="/goodsOrder" method="post">    
+					<div class="container">			        	
+					<form action="/goodsOrder" method="post">
+						<input type="hidden" name="itemCode" value="item1">    
 						<div class="modal-body">펀드유형 : <input type="text" value="일반주식"></div>
 						<div class="modal-body">운용사 : <input type="text" name="firm" value="신한BNP파리바자산운용"> </div>
 						<div class="modal-body">기준가(원) :<input type="text" id="goodsprice1" value="300"> </div>
@@ -456,7 +471,7 @@
 				</div>
 			</div>
 		</div>
-		
+	</div>
  <!-- 2 -->
 		  <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-black bg-warning o-hidden h-100">
@@ -487,6 +502,7 @@
 		          </button>
 		        </div>
 		        <form action="/goodsOrder" method="post">
+		        	<input type="hidden" name="itemCode" value="item2">
 			        <div class="modal-body">펀드유형 :<input type="text" name="fund" value="일반주식"></div>
 			        <div class="modal-body">운용사 :<input type="text" name="firm" value="KB자산운용 "></div>
 			        <div class="modal-body">기준가(원) : <input type="text" id="goodsprice2" value="1115"/></div>
@@ -542,6 +558,7 @@
 		          </button>
 		        </div>
 		        <form action="/goodsOrder" method="post">
+		        	<input type="hidden" name="itemCode" value="item3">
 			        <div class="modal-body">펀드유형 : <input type="text" name="fund" value="일반주식"></div>
 			        <div class="modal-body">운용사 : <input type="text" name="firm" value="한국투자밸류자산운용"> </div>
 			        <div class="modal-body">기준가(원) :<input type="text" id="goodsprice3" value="1274"/></div>
@@ -597,6 +614,7 @@
 		          </button>
 		        </div>
 		        <form action="/goodsOrder" method="post">
+		        	<input type="hidden" name="itemCode" value="item4">
 			        <div class="modal-body">펀드유형 : <input type="text" name="fund" value="일반주식"></div>
 			        <div class="modal-body">운용사 :<input type="text" name="firm" value="마이다스에셋자산운용"></div>
 			        <div class="modal-body">기준가(원) : <input type="text" id="goodsprice4" value="1025"/></div>
@@ -651,7 +669,8 @@
 		            <span aria-hidden="true">×</span>
 		          </button>
 		        </div>
-		        <form action="/goodsOrder" method="post">		                
+		        <form action="/goodsOrder" method="post">
+		        	<input type="hidden" name="itemCode" value="item5">		                
 			        <div class="modal-body">펀드유형 : <input type="text" name="fund" value="중국주식"></div>
 			        <div class="modal-body">운용사 :<input type="text" name="firm" value="삼성자산운용"></div>
 					<div class="modal-body">기준가(원) : <input type="text" id="goodsprice5" value="1371"/></div>
@@ -707,6 +726,7 @@
 		          </button>
 		        </div>
 		        <form action="/goodsOrder" method="post">
+		        	<input type="hidden" name="itemCode" value="item6">
 			        <div class="modal-body">펀드유형 : <input type="text" name="fund" value="북미주식 "></div>
 			        <div class="modal-body">운용사 : <input type="text" name="firm" value="AB자산운용"></div>
 			        <div class="modal-body">기준가(원) : <input type="text" id="goodsprice6" value="1436"/></div>
@@ -762,6 +782,7 @@
 		          </button>
 		        </div>
 		        <form action="/goodsOrder" method="post">
+		        	<input type="hidden" name="itemCode" value="item7">
 			        <div class="modal-body">펀드유형 :<input type="text" name="fund" value="일반주식"></div>
 			        <div class="modal-body">운용사 : <input type="text" name="firm" value="트러스톤자산운용"></div>
 			        <div class="modal-body">기준가(원) :<input type="text" id="goodsprice7" value="930"/></div>
@@ -818,6 +839,7 @@
 		          </button>
 		        </div>
 			    <form action="/goodsOrder" method="post">
+			    	<input type="hidden" name="itemCode" value="item8">
 			        <div class="modal-body">운용사 :<input type="text" name="firm" value="미래"></div>
 			        <div class="modal-body">기준가(원) : <input type="text" id="goodsprice8" value="932"/></div>
 			        <div class="modal-body">펀드유형 : <input type="text" name="fund" value="일반주식"></div>
@@ -885,15 +907,15 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Logout</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">로그아웃하시겠습니까?</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="/logout">Logout</a>
         </div>
       </div>
     </div>
