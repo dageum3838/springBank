@@ -19,219 +19,218 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
-  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
-  $(document).ready(function(){
-		let sessionId = '[[${session.SID}]]';
-		console.log(sessionId+'<--세션아이디');
-		if(sessionId == ''){
-			$('#goodsOrder1').attr('hidden','true');
-			$('#goodsOrder2').attr('hidden','true');
-			$('#goodsOrder3').attr('hidden','true');
-			$('#goodsOrder4').attr('hidden','true');
-			$('#goodsOrder5').attr('hidden','true');
-			$('#goodsOrder6').attr('hidden','true');
-			$('#goodsOrder7').attr('hidden','true');
-			$('#goodsOrder8').attr('hidden','true');
-			$('.form-label-group').attr('hidden','true');
-		}
-		
-		$('.form-control').click(function(){
-			
-			for(let i=0; i<8; i++){
-				let result = $('#accountNo'+i+' option:selected').text();
+  		$(document).ready(function(){
+			let sessionId = '[[${session.SID}]]';
+			console.log(sessionId+'<--세션아이디');
+  			if(sessionId == ''){
+  				$('#goodsOrder1').attr('hidden','true');
+  				$('#goodsOrder2').attr('hidden','true');
+  				$('#goodsOrder3').attr('hidden','true');
+  				$('#goodsOrder4').attr('hidden','true');
+  				$('#goodsOrder5').attr('hidden','true');
+  				$('#goodsOrder6').attr('hidden','true');
+  				$('#goodsOrder7').attr('hidden','true');
+  				$('#goodsOrder8').attr('hidden','true');
+  				$('.form-label-group').attr('hidden','true');
+  			}
+  			
+  			$('.form-control').click(function(){
+  				
+  				for(let i=0; i<8; i++){
+  					let result = $('#accountNo'+i+' option:selected').text();
+  	  				result = result.substr(25,result.length);
+  					let sum = $('#goodsprice'+i).val() * $('#orderVolume'+i).val();
+  	  				$('#orderPrice'+i).attr('value', sum);
+  		  			if(result>$('#orderPrice'+i).val()){
+  		  				$('#goodsOrder'+i).removeAttr('disabled');
+  		  			}else{
+  		  				$('#goodsOrder'+i).attr('disabled','disabled');
+  		  			}
+  				}
+  				
+  			});
+  			
+  			$('#orderVolume1').click(function(){
+  				let result = $('#accountNo1 option:selected').text();
   				result = result.substr(25,result.length);
-				let sum = $('#goodsprice'+i).val() * $('#orderVolume'+i).val();
-  				$('#orderPrice'+i).attr('value', sum);
-	  			if(result>$('#orderPrice'+i).val()){
-	  				$('#goodsOrder'+i).removeAttr('disabled');
+  				let sum = $('#goodsprice1').val() * $('#orderVolume1').val();
+	  			$('#orderPrice1').attr('value', sum);
+	  			if(result>sum){
+	  				$('#goodsOrder1').removeAttr('disabled');
 	  			}else{
-	  				$('#goodsOrder'+i).attr('disabled','disabled');
+	  				$('#goodsOrder1').attr('disabled','disabled');
 	  			}
-			}
-			
-		});
-		
-		$('#orderVolume1').click(function(){
-			let result = $('#accountNo1 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice1').val() * $('#orderVolume1').val();
-			$('#orderPrice1').attr('value', sum);
-			if(result>sum){
-				$('#goodsOrder1').removeAttr('disabled');
-			}else{
-				$('#goodsOrder1').attr('disabled','disabled');
-			}
-		});
-		$('#orderVolume1').change(function(){
-			let result = $('#accountNo1 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice1').val() * $('#orderVolume1').val();
-			$('#orderPrice1').attr('value', sum);
-			if(result>sum){
-				$('#goodsOrder1').removeAttr('disabled');
-			}else{
-				$('#goodsOrder1').attr('disabled','disabled');
-			}
-		});
-		$('#orderVolume2').click(function(){
-			let result = $('#accountNo2 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice2').val() * $('#orderVolume2').val();
-			$('#orderPrice2').attr('value', sum);
-			console.log(result);
-			console.log(sum);
-			if(result>sum){
-				$('#goodsOrder2').removeAttr('disabled');
-			}else{
-				$('#goodsOrder2').attr('disabled','disabled');
-			}
-		});
-		$('#orderVolume2').change(function(){
-			let result = $('#accountNo2 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice2').val() * $('#orderVolume2').val();
-			$('#orderPrice2').attr('value', sum);
-			if(result>sum){
-				$('#goodsOrder2').removeAttr('disabled');
-			}else{
-				$('#goodsOrder2').attr('disabled','disabled');
-			}
-		});
-		$('#orderVolume3').click(function(){
-			let result = $('#accountNo3 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice3').val() * $('#orderVolume3').val();
-			$('#orderPrice3').attr('value', sum);
-			if(result>$('#orderPrice3').val()){
-				$('#goodsOrder3').removeAttr('disabled');
-			}else{
-				$('#goodsOrder3').attr('disabled','disabled');
-			}
-		});
-		$('#orderVolume3').change(function(){
-			let result = $('#accountNo3 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice3').val() * $('#orderVolume3').val();
-			$('#orderPrice3').attr('value', sum);
-			if(result>$('#orderPrice3').val()){
-				$('#goodsOrder3').removeAttr('disabled');
-			}else{
-				$('#goodsOrder3').attr('disabled','disabled');
-			}
-		});
-		$('#orderVolume4').click(function(){
-			let result = $('#accountNo4 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice4').val() * $('#orderVolume4').val();
-			$('#orderPrice4').attr('value', sum);
-			if(result>$('#orderPrice4').val()){
-				$('#goodsOrder4').removeAttr('disabled');
-			}else{
-				$('#goodsOrder4').attr('disabled','disabled');
-			}
-		});
-		$('#orderVolume4').change(function(){
-			let result = $('#accountNo4 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice4').val() * $('#orderVolume4').val();
-			$('#orderPrice4').attr('value', sum);
-			if(result>$('#orderPrice4').val()){
-				$('#goodsOrder4').removeAttr('disabled');
-			}else{
-				$('#goodsOrder4').attr('disabled','disabled');
-			}
-		});
-		$('#orderVolume5').click(function(){
-			let result = $('#accountNo5 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice5').val() * $('#orderVolume5').val();
-			$('#orderPrice5').attr('value', sum);
-			if(result>$('#orderPrice5').val()){
-				$('#goodsOrder5').removeAttr('disabled');
-			}else{
-				$('#goodsOrder5').attr('disabled','disabled');
-			}
-		});
-		$('#orderVolume5').change(function(){
-			let result = $('#accountNo5 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice5').val() * $('#orderVolume5').val();
-			$('#orderPrice5').attr('value', sum);
-			if(result>$('#orderPrice5').val()){
-				$('#goodsOrder5').removeAttr('disabled');
-			}else{
-				$('#goodsOrder5').attr('disabled','disabled');
-			}
-		});
-		$('#orderVolume6').click(function(){
-			let result = $('#accountNo6 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice6').val() * $('#orderVolume6').val();
-			$('#orderPrice6').attr('value', sum);
-			if(result>$('#orderPrice6').val()){
-				$('#goodsOrder6').removeAttr('disabled');
-			}else{
-				$('#goodsOrder6').attr('disabled','disabled');
-			}
-		});
-		$('#orderVolume6').change(function(){
-			let result = $('#accountNo6 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice6').val() * $('#orderVolume6').val();
-			$('#orderPrice6').attr('value', sum);
-			if(result>$('#orderPrice6').val()){
-				$('#goodsOrder6').removeAttr('disabled');
-			}else{
-				$('#goodsOrder6').attr('disabled','disabled');
-			}
-		});
-		$('#orderVolume7').click(function(){
-			let result = $('#accountNo7 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice7').val() * $('#orderVolume7').val();
-			$('#orderPrice7').attr('value', sum);
-			if(result>$('#orderPrice7').val()){
-				$('#goodsOrder7').removeAttr('disabled');
-			}else{
-				$('#goodsOrder7').attr('disabled','disabled');
-			}
-		});
-		$('#orderVolume7').change(function(){
-			let result = $('#accountNo7 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice7').val() * $('#orderVolume7').val();
-			$('#orderPrice7').attr('value', sum);
-			if(result>$('#orderPrice7').val()){
-				$('#goodsOrder7').removeAttr('disabled');
-			}else{
-				$('#goodsOrder7').attr('disabled','disabled');
-			}
-		});
-		$('#orderVolume8').click(function(){
-			let result = $('#accountNo8 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice8').val() * $('#orderVolume8').val();
-			$('#orderPrice8').attr('value', sum);
-			if(result>$('#orderPrice8').val()){
-				$('#goodsOrder8').removeAttr('disabled');
-			}else{
-				$('#goodsOrder8').attr('disabled','disabled');
-			}
-		});
-		$('#orderVolume8').change(function(){
-			let result = $('#accountNo8 option:selected').text();
-			result = result.substr(25,result.length);
-			let sum = $('#goodsprice8').val() * $('#orderVolume8').val();
-			$('#orderPrice8').attr('value', sum);
-			if(result>$('#orderPrice8').val()){
-				$('#goodsOrder8').removeAttr('disabled');
-			}else{
-				$('#goodsOrder8').attr('disabled','disabled');
-			}
-		});
-	});  	
+  			});
+  			$('#orderVolume1').change(function(){
+  				let result = $('#accountNo1 option:selected').text();
+  				result = result.substr(25,result.length);
+  				let sum = $('#goodsprice1').val() * $('#orderVolume1').val();
+	  			$('#orderPrice1').attr('value', sum);
+	  			if(result>sum){
+	  				$('#goodsOrder1').removeAttr('disabled');
+	  			}else{
+	  				$('#goodsOrder1').attr('disabled','disabled');
+	  			}
+  			});
+  			$('#orderVolume2').click(function(){
+  				let result = $('#accountNo2 option:selected').text();
+  				result = result.substr(25,result.length);
+  				let sum = $('#goodsprice2').val() * $('#orderVolume2').val();
+	  			$('#orderPrice2').attr('value', sum);
+	  			console.log(result);
+	  			console.log(sum);
+	  			if(result>sum){
+	  				$('#goodsOrder2').removeAttr('disabled');
+	  			}else{
+	  				$('#goodsOrder2').attr('disabled','disabled');
+	  			}
+  			});
+  			$('#orderVolume2').change(function(){
+  				let result = $('#accountNo2 option:selected').text();
+  				result = result.substr(25,result.length);
+  				let sum = $('#goodsprice2').val() * $('#orderVolume2').val();
+	  			$('#orderPrice2').attr('value', sum);
+	  			if(result>sum){
+	  				$('#goodsOrder2').removeAttr('disabled');
+	  			}else{
+	  				$('#goodsOrder2').attr('disabled','disabled');
+	  			}
+  			});
+  			$('#orderVolume3').click(function(){
+  				let result = $('#accountNo3 option:selected').text();
+  				result = result.substr(25,result.length);
+  				let sum = $('#goodsprice3').val() * $('#orderVolume3').val();
+	  			$('#orderPrice3').attr('value', sum);
+	  			if(result>$('#orderPrice3').val()){
+	  				$('#goodsOrder3').removeAttr('disabled');
+	  			}else{
+	  				$('#goodsOrder3').attr('disabled','disabled');
+	  			}
+  			});
+  			$('#orderVolume3').change(function(){
+  				let result = $('#accountNo3 option:selected').text();
+  				result = result.substr(25,result.length);
+  				let sum = $('#goodsprice3').val() * $('#orderVolume3').val();
+	  			$('#orderPrice3').attr('value', sum);
+	  			if(result>$('#orderPrice3').val()){
+	  				$('#goodsOrder3').removeAttr('disabled');
+	  			}else{
+	  				$('#goodsOrder3').attr('disabled','disabled');
+	  			}
+  			});
+  			$('#orderVolume4').click(function(){
+  				let result = $('#accountNo4 option:selected').text();
+  				result = result.substr(25,result.length);
+  				let sum = $('#goodsprice4').val() * $('#orderVolume4').val();
+	  			$('#orderPrice4').attr('value', sum);
+	  			if(result>$('#orderPrice4').val()){
+	  				$('#goodsOrder4').removeAttr('disabled');
+	  			}else{
+	  				$('#goodsOrder4').attr('disabled','disabled');
+	  			}
+  			});
+  			$('#orderVolume4').change(function(){
+  				let result = $('#accountNo4 option:selected').text();
+  				result = result.substr(25,result.length);
+  				let sum = $('#goodsprice4').val() * $('#orderVolume4').val();
+	  			$('#orderPrice4').attr('value', sum);
+	  			if(result>$('#orderPrice4').val()){
+	  				$('#goodsOrder4').removeAttr('disabled');
+	  			}else{
+	  				$('#goodsOrder4').attr('disabled','disabled');
+	  			}
+  			});
+  			$('#orderVolume5').click(function(){
+  				let result = $('#accountNo5 option:selected').text();
+  				result = result.substr(25,result.length);
+  				let sum = $('#goodsprice5').val() * $('#orderVolume5').val();
+	  			$('#orderPrice5').attr('value', sum);
+	  			if(result>$('#orderPrice5').val()){
+	  				$('#goodsOrder5').removeAttr('disabled');
+	  			}else{
+	  				$('#goodsOrder5').attr('disabled','disabled');
+	  			}
+  			});
+  			$('#orderVolume5').change(function(){
+  				let result = $('#accountNo5 option:selected').text();
+  				result = result.substr(25,result.length);
+  				let sum = $('#goodsprice5').val() * $('#orderVolume5').val();
+	  			$('#orderPrice5').attr('value', sum);
+	  			if(result>$('#orderPrice5').val()){
+	  				$('#goodsOrder5').removeAttr('disabled');
+	  			}else{
+	  				$('#goodsOrder5').attr('disabled','disabled');
+	  			}
+  			});
+  			$('#orderVolume6').click(function(){
+  				let result = $('#accountNo6 option:selected').text();
+  				result = result.substr(25,result.length);
+  				let sum = $('#goodsprice6').val() * $('#orderVolume6').val();
+	  			$('#orderPrice6').attr('value', sum);
+	  			if(result>$('#orderPrice6').val()){
+	  				$('#goodsOrder6').removeAttr('disabled');
+	  			}else{
+	  				$('#goodsOrder6').attr('disabled','disabled');
+	  			}
+  			});
+  			$('#orderVolume6').change(function(){
+  				let result = $('#accountNo6 option:selected').text();
+  				result = result.substr(25,result.length);
+  				let sum = $('#goodsprice6').val() * $('#orderVolume6').val();
+	  			$('#orderPrice6').attr('value', sum);
+	  			if(result>$('#orderPrice6').val()){
+	  				$('#goodsOrder6').removeAttr('disabled');
+	  			}else{
+	  				$('#goodsOrder6').attr('disabled','disabled');
+	  			}
+  			});
+  			$('#orderVolume7').click(function(){
+  				let result = $('#accountNo7 option:selected').text();
+  				result = result.substr(25,result.length);
+  				let sum = $('#goodsprice7').val() * $('#orderVolume7').val();
+	  			$('#orderPrice7').attr('value', sum);
+	  			if(result>$('#orderPrice7').val()){
+	  				$('#goodsOrder7').removeAttr('disabled');
+	  			}else{
+	  				$('#goodsOrder7').attr('disabled','disabled');
+	  			}
+  			});
+  			$('#orderVolume7').change(function(){
+  				let result = $('#accountNo7 option:selected').text();
+  				result = result.substr(25,result.length);
+  				let sum = $('#goodsprice7').val() * $('#orderVolume7').val();
+	  			$('#orderPrice7').attr('value', sum);
+	  			if(result>$('#orderPrice7').val()){
+	  				$('#goodsOrder7').removeAttr('disabled');
+	  			}else{
+	  				$('#goodsOrder7').attr('disabled','disabled');
+	  			}
+  			});
+  			$('#orderVolume8').click(function(){
+  				let result = $('#accountNo8 option:selected').text();
+  				result = result.substr(25,result.length);
+  				let sum = $('#goodsprice8').val() * $('#orderVolume8').val();
+	  			$('#orderPrice8').attr('value', sum);
+	  			if(result>$('#orderPrice8').val()){
+	  				$('#goodsOrder8').removeAttr('disabled');
+	  			}else{
+	  				$('#goodsOrder8').attr('disabled','disabled');
+	  			}
+  			});
+  			$('#orderVolume8').change(function(){
+  				let result = $('#accountNo8 option:selected').text();
+  				result = result.substr(25,result.length);
+  				let sum = $('#goodsprice8').val() * $('#orderVolume8').val();
+	  			$('#orderPrice8').attr('value', sum);
+	  			if(result>$('#orderPrice8').val()){
+	  				$('#goodsOrder8').removeAttr('disabled');
+	  			}else{
+	  				$('#goodsOrder8').attr('disabled','disabled');
+	  			}
+  			});
+		}); 	
   </script>
 
 </head>
@@ -842,23 +841,6 @@
 		      </div>
 		    </div>    
 		  </div>
-		  
-		
-          
-
-        <!-- Area Chart Example-->
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-chart-area"></i>
-            주식선물옵션</div>
-          <div class="card-body">
-            <canvas id="myAreaChart" width="100%" height="30"></canvas>
-          </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
-
-        
-      <!-- /.container-fluid -->
 
       <!-- Sticky Footer -->
       <footer class="sticky-footer">
@@ -880,25 +862,7 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

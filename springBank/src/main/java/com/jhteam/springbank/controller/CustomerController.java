@@ -24,16 +24,7 @@ import com.jhteam.springbank.vo.Management;
 public class CustomerController {
 	// 자동DI : service계층 클래스 (CustomerService.java)
 	@Autowired private CustomerService customerservice;
-	
-	// index 페이지 요청
-    /* @brief  "http://localhost/index" 주소분기(get방식)
-	 * 		   template폴더에 있는 index.html forward
-	 * @return String(view이름)
-	 */
-	@GetMapping("/index")
-	public String index() {
-		return "index";
-	}
+
 	
 	// login 페이지 요청
     /* @brief  "http://localhost/login" 주소분기(get방식)

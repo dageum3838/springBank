@@ -1,6 +1,6 @@
 package com.jhteam.springbank.vo;
 
-public class Orders {
+public class Orders extends BankAccount{
 	private String orderDate;
 	private String orderNo;
 	private String accountNo;
